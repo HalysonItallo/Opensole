@@ -9,11 +9,17 @@
 [node name="BG-nebula" parent="." index="0"]
 scale = Vector2( 0.469482, 0.263154 )
 
-[node name="ship" type="Node2D" parent="." index="1"]
-scale = Vector2( 0.470703, 0.263838 )
+[node name="ship2" type="Node2D" parent="BG-nebula" index="0"]
+scale = Vector2( 1.0026, 1.0026 )
 script = ExtResource( 2 )
 
-[node name="Nave1" type="Sprite" parent="ship" index="0"]
+[node name="Nave1" type="Sprite" parent="BG-nebula/ship2" index="0"]
 position = Vector2( 2048, 3797 )
 scale = Vector2( 2, 3 )
 texture = ExtResource( 3 )
+
+[node name="ship" parent="BG-nebula" index="1"]
+visible = false
+
+[node name="Nave1" parent="BG-nebula/ship" index="0"]
+visible = false
