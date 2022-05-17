@@ -27,7 +27,7 @@ func movimentoXY(delta):
 	translate(Vector2(eixoX,eixoY))
 	
 	var viewRect := get_viewport_rect()
-	position.x = clamp(position.x, -1900, viewRect.size.x)
+	position.x = clamp(position.x, -1920, viewRect.size.x)
 	position.y = clamp(position.y, -2500, viewRect.size.y)
 	
 
