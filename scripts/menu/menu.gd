@@ -17,7 +17,7 @@ func _ready():
 
 
 func _on_StartButton_pressed():
-	get_tree().change_scene("res://scenes/spaceship/game2.tscn")
+	get_tree().change_scene("res://scenes/spaceship/spacecombat1.tscn")
 
 
 func _on_ExitButton_pressed():
