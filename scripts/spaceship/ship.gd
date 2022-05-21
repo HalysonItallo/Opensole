@@ -5,7 +5,7 @@ extends Node2D
 # var a = 2
 # var b = "text"
 
-func movimentoXY():
+func movimentoXY(delta):
 	var velocidade = 55
 #eixo X
 	var eixoX = 0
@@ -26,6 +26,10 @@ func movimentoXY():
 		#translate(Vector2(eixoY,0))
 	translate(Vector2(eixoX,eixoY))
 	
+	var viewRect := get_viewport_rect()
+	position.x = clamp(position.x, -1920, viewRect.size.x)
+	position.y = clamp(position.y, -2500, viewRect.size.y)
+	
 
 # Called when the node enters the scene tree for the first time.
 func _ready(): #equivalente ao init
@@ -34,5 +38,5 @@ func _ready(): #equivalente ao init
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	movimentoXY()
+	movimentoXY(delta)
 	pass

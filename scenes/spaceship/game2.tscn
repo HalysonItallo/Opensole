@@ -14,7 +14,7 @@ scale = Vector2( 1.0026, 1.0026 )
 script = ExtResource( 2 )
 
 [node name="Nave1" type="Sprite" parent="BG-nebula/ship2" index="0"]
-position = Vector2( 2048, 3797 )
+position = Vector2( 2048, 2750 )
 scale = Vector2( 2, 3 )
 texture = ExtResource( 3 )
 
