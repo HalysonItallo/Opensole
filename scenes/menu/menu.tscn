@@ -1,9 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://scripts/menu/menu.gd" type="Script" id=1]
 [ext_resource path="res://assets/sprites/menu/Start_BTN.png" type="Texture" id=2]
 [ext_resource path="res://assets/sprites/menu/Exit_BTN.png" type="Texture" id=3]
 [ext_resource path="res://assets/sprites/menu/BG.png" type="Texture" id=4]
+[ext_resource path="res://audio/menu_confirm.ogg" type="AudioStream" id=5]
+[ext_resource path="res://audio/menu_select.ogg" type="AudioStream" id=6]
 
 [sub_resource type="Theme" id=1]
 
@@ -43,5 +45,15 @@ margin_bottom = 258.0
 icon = ExtResource( 3 )
 flat = true
 
+[node name="MenuSelect" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+
+[node name="MenuConfirm" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+
+[connection signal="focus_entered" from="VBoxContainer/StartButton" to="." method="_on_StartButton_focus_entered"]
+[connection signal="mouse_entered" from="VBoxContainer/StartButton" to="." method="_on_StartButton_mouse_entered"]
 [connection signal="pressed" from="VBoxContainer/StartButton" to="." method="_on_StartButton_pressed"]
+[connection signal="focus_entered" from="VBoxContainer/ExitButton" to="." method="_on_ExitButton_focus_entered"]
+[connection signal="mouse_entered" from="VBoxContainer/ExitButton" to="." method="_on_ExitButton_mouse_entered"]
 [connection signal="pressed" from="VBoxContainer/ExitButton" to="." method="_on_ExitButton_pressed"]
