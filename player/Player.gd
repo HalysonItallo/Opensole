@@ -2,6 +2,8 @@ extends Area2D
 
 export var speed: float = 1024
 var velocity := Vector2(0, 0)
+onready var bullet_instance = preload("res://scenes/spaceship/bullet.tscn") #instancia do projetil
+var shootType = 1 
 
 func _ready():
 	var viewportSize := get_viewport_rect().size
@@ -10,6 +12,10 @@ func _ready():
 	position.y = viewportSize.y - yOffset
 
 func _process(delta):
+	if Input.is_action_just_pressed("shoot"):
+		#botao shoot definido em configuracoes de entrada
+		pressShoot()
+		
 	resetVelocity()
 	var directionVector := Vector2(0, 0)
 	
@@ -39,3 +45,9 @@ func adjustPlayerBounds():
 	var xOffset = 54
 	position.x = clamp(position.x, xOffset, viewRect.size.x - xOffset)
 	position.y = clamp(position.y, yOffset, viewRect.size.y - yOffset)
+	
+func pressShoot():
+	var bullet = bullet_instance.instance()
+	bullet.direction = $ShootPosition.global_position - global_position #direcao e posicao
+	bullet.global_position = $ShootPosition.global_position
+	get_tree().get_root().add_child(bullet)
