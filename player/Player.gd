@@ -6,7 +6,7 @@ export var fireDelay: float = 0.16
 var velocity := Vector2(0, 0)
 var shootType = 1 
 
-onready var bullet_instance = preload("res://Bullet/Bullet.tscn") #instancia do projetil
+onready var bullet_instance = preload("res://bullet/Bullet.tscn") #instancia do projetil
 
 onready var fireDelayTimer := $FireDelay
 onready var shootPositions := $ShootPositions

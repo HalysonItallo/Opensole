@@ -1,6 +1,6 @@
 extends Control
 
-var preloadedIcon := preload("res://HUD/LifeIcon.tscn")
+var preloadedIcon := preload("res://hud/LifeIcon.tscn")
 const STARTING_LIVES = 5
 onready var lifeContainer := $LifeContainer
 
