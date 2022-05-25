@@ -17,6 +17,6 @@ func clearLives():
 
 func setLives(lives: int):
 	clearLives()
-	for i in range(lives):
+	for _i in range(lives):
 		lifeContainer.add_child(preloadedIcon.instance())
 

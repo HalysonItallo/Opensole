@@ -1,9 +1,15 @@
 extends Area2D
 
 export var speed: float = 1024
+export var fireDelay: float = 0.16
+
 var velocity := Vector2(0, 0)
-onready var bullet_instance = preload("res://scenes/spaceship/bullet.tscn") #instancia do projetil
 var shootType = 1 
+
+onready var bullet_instance = preload("res://Bullet/Bullet.tscn") #instancia do projetil
+
+onready var fireDelayTimer := $FireDelay
+onready var shootPositions := $ShootPositions
 
 func _ready():
 	var viewportSize := get_viewport_rect().size
@@ -11,8 +17,9 @@ func _ready():
 	position.x = viewportSize.x / 2.0 # Metade da tela à direita (na verdade centraliza, começando de 0,0)
 	position.y = viewportSize.y - yOffset
 
+
 func _process(delta):
-	if Input.is_action_just_pressed("shoot"):
+	if Input.is_action_pressed("shoot") and fireDelayTimer.is_stopped():
 		#botao shoot definido em configuracoes de entrada
 		pressShoot()
 		
@@ -33,10 +40,12 @@ func _process(delta):
 	position += velocity * delta
 	
 	adjustPlayerBounds()
+
 	
 func resetVelocity():
 	velocity.y = 0
 	velocity.x = 0
+
 
 func adjustPlayerBounds():
 	# Manter o player na tela
@@ -45,9 +54,11 @@ func adjustPlayerBounds():
 	var xOffset = 54
 	position.x = clamp(position.x, xOffset, viewRect.size.x - xOffset)
 	position.y = clamp(position.y, yOffset, viewRect.size.y - yOffset)
-	
+
+
 func pressShoot():
-	var bullet = bullet_instance.instance()
-	bullet.direction = $ShootPosition.global_position - global_position #direcao e posicao
-	bullet.global_position = $ShootPosition.global_position
-	get_tree().get_root().add_child(bullet)
+	fireDelayTimer.start(fireDelay)
+	for child in shootPositions.get_children():
+		var bullet = bullet_instance.instance()
+		bullet.global_position = child.global_position
+		get_tree().current_scene.add_child(bullet)

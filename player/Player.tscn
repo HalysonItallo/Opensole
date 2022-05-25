@@ -16,5 +16,13 @@ texture = ExtResource( 1 )
 visible = false
 shape = SubResource( 1 )
 
-[node name="ShootPosition" type="Position2D" parent="."]
-position = Vector2( -1, -77 )
+[node name="ShootPositions" type="Node2D" parent="."]
+
+[node name="LeftGun" type="Node2D" parent="ShootPositions"]
+position = Vector2( -45, -10 )
+
+[node name="RightGun" type="Node2D" parent="ShootPositions"]
+position = Vector2( 46, -10 )
+
+[node name="FireDelay" type="Timer" parent="."]
+one_shot = true
