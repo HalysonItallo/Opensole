@@ -1,6 +1,6 @@
 extends Control
 
-var preloadedIcon := preload("res://HUD/LifeIcon.tscn")
+var preloadedIcon := preload("res://hud/LifeIcon.tscn")
 const STARTING_LIVES = 5
 onready var lifeContainer := $LifeContainer
 
@@ -17,6 +17,6 @@ func clearLives():
 
 func setLives(lives: int):
 	clearLives()
-	for i in range(lives):
+	for _i in range(lives):
 		lifeContainer.add_child(preloadedIcon.instance())
 
