@@ -1,21 +1,27 @@
 extends Area2D
+class_name Player
 
 export var speed: float = 1024
 export var fireDelay: float = 0.15
+export var life: int = 5
+export var damageInvincibilityTime: float = 1.5
 
 var velocity := Vector2(0, 0)
-var shootType = 1 
 
 onready var bullet_instance = preload("res://bullet/Bullet.tscn") # instancia do projetil
 
-onready var fireDelayTimer := $FireDelay
 onready var shootPositions := $ShootPositions
+onready var fireDelayTimer := $FireDelay
+onready var invincibilityTimer := $Invincibility
+onready var shieldSprite := $Shield
 
 func _ready():
 	var viewportSize := get_viewport_rect().size
 	var yOffset = (viewportSize.y * 10) / 100 # 10% acima
 	position.x = viewportSize.x / 2.0 # Metade da tela à direita (na verdade centraliza, começando de 0,0)
 	position.y = viewportSize.y - yOffset
+	
+	shieldSprite.visible  = false
 
 
 func _process(delta):
@@ -62,3 +68,21 @@ func pressShoot():
 		var bullet = bullet_instance.instance()
 		bullet.global_position = child.global_position
 		get_tree().current_scene.add_child(bullet)
+
+
+func takeDamage(damageAmount: int):
+	if !invincibilityTimer.is_stopped():
+		return
+		
+	invincibilityTimer.start(damageInvincibilityTime)
+	shieldSprite.visible = true
+	
+	life -= damageAmount
+	if (life <= 0):
+		print("You died")
+		queue_free()
+	
+
+
+func _on_Invincibility_timeout():
+	shieldSprite.visible = false
