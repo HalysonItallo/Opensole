@@ -7,7 +7,11 @@ onready var lifeContainer := $LifeContainer
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	clearLives()
-	setLives(STARTING_LIVES)
+	Signals.connect("on_player_life_changed", self, "_on_player_life_changed")
+
+
+func _on_player_life_changed(life: int):
+	setLives(life)
 
 
 func clearLives():

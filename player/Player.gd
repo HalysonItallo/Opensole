@@ -22,6 +22,7 @@ func _ready():
 	position.y = viewportSize.y - yOffset
 	
 	shieldSprite.visible  = false
+	Signals.emit_signal("on_player_life_changed", life)
 
 
 func _process(delta):
@@ -78,6 +79,8 @@ func takeDamage(damageAmount: int):
 	shieldSprite.visible = true
 	
 	life -= damageAmount
+	Signals.emit_signal("on_player_life_changed", life)
+	
 	if (life <= 0):
 		print("You died")
 		queue_free()

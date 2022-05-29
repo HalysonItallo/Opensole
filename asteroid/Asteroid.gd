@@ -19,7 +19,7 @@ func _ready():
 	rotationRate = rand_range(minRotationRate, maxRotationRate)
 
 
-func _process(delta):
+func _process(_delta):
 	if playerInArea != null:
 		playerInArea.takeDamage(1)
 	
@@ -35,10 +35,12 @@ func takeDamage(damageAmount: int):
 		showDestroyEffect()
 		queue_free()
 
+
 func showDestroyEffect():
 	var asteroidFx := preAsteroidFx.instance()
 	asteroidFx.position = position
 	get_parent().add_child(asteroidFx)
+
 
 func _on_VisibilityNotifier2D_screen_exited():
 	queue_free()
