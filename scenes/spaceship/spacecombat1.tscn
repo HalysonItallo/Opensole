@@ -11,9 +11,13 @@
 [node name="Gameplay" type="Node"]
 script = ExtResource( 6 )
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+script = ExtResource( 2 )
+
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+z_index = -100
 motion_mirroring = Vector2( 1920, 1920 )
 
 [node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
@@ -54,12 +58,12 @@ angle_random = 0.64
 scale_amount = 1.48
 scale_amount_random = 0.64
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-script = ExtResource( 2 )
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HUD" parent="CanvasLayer" instance=ExtResource( 4 )]
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-
-[node name="HUD" parent="." instance=ExtResource( 4 )]
+z_index = 100
 
 [node name="Asteroid" parent="." instance=ExtResource( 5 )]
 position = Vector2( 842, 183 )

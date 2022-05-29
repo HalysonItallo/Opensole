@@ -12,12 +12,12 @@ margin_left = 16.0
 margin_top = 16.0
 margin_right = 40.0
 margin_bottom = 40.0
+rect_scale = Vector2( 0.75, 0.75 )
 custom_constants/separation = 8
-
 [node name="Score" type="Label" parent="."]
 anchor_right = 1.0
 margin_top = 16.0
-margin_right = -16.0
+margin_right = -64.0
 margin_bottom = 64.0
 text = "000"
 align = 2
