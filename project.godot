@@ -24,6 +24,10 @@ config/name="mining_spaceship"
 run/main_scene="res://scenes/menu/menu.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+Signals="*res://autoloads/Signals.gd"
+
 [display]
 
 window/size/width=1920

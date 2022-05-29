@@ -4,7 +4,7 @@ class_name Player
 export var speed: float = 1024
 export var fireDelay: float = 0.15
 export var life: int = 5
-export var damageInvincibilityTime: float = 1.5
+export var damageInvincibilityTime: float = 1.25
 
 var velocity := Vector2(0, 0)
 
@@ -56,8 +56,8 @@ func resetVelocity():
 func adjustPlayerBounds():
 	# Manter o player na tela
 	var viewRect := get_viewport_rect()
-	var yOffset = 90
-	var xOffset = 54
+	var yOffset = 60
+	var xOffset = 46
 	position.x = clamp(position.x, xOffset, viewRect.size.x - xOffset)
 	position.y = clamp(position.y, yOffset, viewRect.size.y - yOffset)
 
