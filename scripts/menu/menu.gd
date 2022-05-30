@@ -20,22 +20,27 @@ func _ready():
 
 func _on_StartButton_pressed():
 	$MenuConfirm.play()
-	get_tree().change_scene("res://scenes/spaceship/spacecombat1.tscn")
+	get_tree().change_scene("res://scenes/spaceship/Gameplay.tscn")
+
 
 func _on_StartButton_focus_entered():
 	if (firstFocus):
 		return
 	$MenuSelect.play()
 
+
 func _on_StartButton_mouse_entered():
 	$VBoxContainer/StartButton.grab_focus()
-	
+
+
 func _on_ExitButton_pressed():
 	$MenuSelect.play()
 	get_tree().quit()
 
+
 func _on_ExitButton_focus_entered():
 	$MenuSelect.play()
+
 
 func _on_ExitButton_mouse_entered():
 	$VBoxContainer/ExitButton.grab_focus()

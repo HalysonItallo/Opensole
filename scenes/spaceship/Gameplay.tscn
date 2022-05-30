@@ -1,18 +1,18 @@
 [gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://player/Player.tscn" type="PackedScene" id=1]
-[ext_resource path="res://scenes/spaceship/AudioStreamPlayer.gd" type="Script" id=2]
+[ext_resource path="res://hud/HUD.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/sprites/background/stage_01.png" type="Texture" id=3]
-[ext_resource path="res://hud/HUD.tscn" type="PackedScene" id=4]
-[ext_resource path="res://asteroid/Asteroid.tscn" type="PackedScene" id=5]
-[ext_resource path="res://scenes/spaceship/Stage01.gd" type="Script" id=6]
-[ext_resource path="res://assets/sprites/gameplay/stars/starSmall.png" type="Texture" id=8]
+[ext_resource path="res://assets/sprites/gameplay/stars/starSmall.png" type="Texture" id=4]
+[ext_resource path="res://scenes/spaceship/AudioStreamPlayer.gd" type="Script" id=5]
+[ext_resource path="res://scenes/spaceship/Gameplay.gd" type="Script" id=6]
+[ext_resource path="res://enemy/Spawner.gd" type="Script" id=7]
 
 [node name="Gameplay" type="Node"]
 script = ExtResource( 6 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-script = ExtResource( 2 )
+script = ExtResource( 5 )
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
@@ -30,7 +30,7 @@ centered = false
 position = Vector2( 960, 0 )
 amount = 128
 lifetime = 8.0
-texture = ExtResource( 8 )
+texture = ExtResource( 4 )
 emission_shape = 2
 emission_rect_extents = Vector2( 960, 1 )
 direction = Vector2( 0, 1 )
@@ -39,14 +39,15 @@ gravity = Vector2( 0, 0 )
 initial_velocity = 256.0
 angle = 48.0
 angle_random = 0.64
-scale_amount = 0.48
-scale_amount_random = 0.24
+scale_amount = 0.56
+scale_amount_random = 0.32
 
 [node name="BigStars" type="CPUParticles2D" parent="FX"]
+self_modulate = Color( 0.25098, 0.678431, 0.905882, 1 )
 position = Vector2( 960, 0 )
 amount = 32
 lifetime = 12.0
-texture = ExtResource( 8 )
+texture = ExtResource( 4 )
 emission_shape = 2
 emission_rect_extents = Vector2( 960, 1 )
 direction = Vector2( 0, 1 )
@@ -55,17 +56,21 @@ gravity = Vector2( 0, 0 )
 initial_velocity = 180.0
 angle = 48.0
 angle_random = 0.64
-scale_amount = 1.48
+scale_amount = 1.8
 scale_amount_random = 0.64
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="HUD" parent="CanvasLayer" instance=ExtResource( 4 )]
+[node name="HUD" parent="CanvasLayer" instance=ExtResource( 2 )]
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 z_index = 100
 
-[node name="Asteroid" parent="." instance=ExtResource( 5 )]
-position = Vector2( 842, 183 )
+[node name="Spawner" type="Node2D" parent="."]
+position = Vector2( 960, -90 )
+script = ExtResource( 7 )
 
-[connection signal="area_entered" from="Asteroid" to="Asteroid" method="_on_Asateroid_area_entered"]
+[node name="SpawnTimer" type="Timer" parent="Spawner"]
+one_shot = true
+
+[connection signal="timeout" from="Spawner/SpawnTimer" to="Spawner" method="_on_SpawnTimer_timeout"]

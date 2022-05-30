@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://bullet/Bullet.tscn" type="PackedScene" id=1]
+[ext_resource path="res://bullet/EnemyBullet.gd" type="Script" id=2]
+
+[node name="EnemyBullet" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+speed = 480
+
+[node name="Sprite" parent="." index="0"]
+modulate = Color( 1, 0.423529, 0.423529, 1 )
+self_modulate = Color( 1, 0.858824, 0.380392, 1 )
+rotation = 3.14159
+region_rect = Rect2( 16, 16, 16, 16 )
+
+[node name="VisibilityNotifier2D" parent="." index="2"]
+position = Vector2( 1.01613, -0.777127 )
+scale = Vector2( -1.04991, 3.73617 )
