@@ -27,7 +27,7 @@ func spawnEnemy(xPos: int):
 
 
 func spawnAsteroid(xPos: int):
-	var asteroid: Asteroid = preloadAsteroid.instance()
+	var asteroid = preloadAsteroid.instance()
 	asteroid.position = Vector2(xPos, position.y)
 	get_tree().current_scene.add_child(asteroid)
 
@@ -36,7 +36,7 @@ func _on_SpawnTimer_timeout():
 	var viewRect = get_viewport_rect()
 	var xPos := rand_range(viewRect.position.x, viewRect.end.x)
 	
-	if randf() < 0.3:
+	if randf() < 0.4:
 		spawnAsteroid(xPos)
 	else:
 		spawnEnemy(xPos)
