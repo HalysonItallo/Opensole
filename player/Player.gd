@@ -57,10 +57,8 @@ func resetVelocity():
 func adjustPlayerBounds():
 	# Manter o player na tela
 	var viewRect := get_viewport_rect()
-	var yOffset = 60
-	var xOffset = 46
-	position.x = clamp(position.x, xOffset, viewRect.size.x - xOffset)
-	position.y = clamp(position.y, yOffset, viewRect.size.y - yOffset)
+	position.x = clamp(position.x, 0, viewRect.size.x)
+	position.y = clamp(position.y, 0, viewRect.size.y)
 
 
 func pressShoot():

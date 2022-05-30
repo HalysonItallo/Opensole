@@ -10,12 +10,30 @@ config_version=4
 
 _global_script_classes=[ {
 "base": "Area2D",
+"class": "Asteroid",
+"language": "GDScript",
+"path": "res://asteroid/Asteroid.gd"
+}, {
+"base": "Area2D",
+"class": "Enemy",
+"language": "GDScript",
+"path": "res://enemy/Enemy.gd"
+}, {
+"base": "Area2D",
 "class": "Player",
 "language": "GDScript",
 "path": "res://player/Player.gd"
+}, {
+"base": "Enemy",
+"class": "SlowEnemy",
+"language": "GDScript",
+"path": "res://SlowShooterEnemy.gd"
 } ]
 _global_script_class_icons={
-"Player": ""
+"Asteroid": "",
+"Enemy": "",
+"Player": "",
+"SlowEnemy": ""
 }
 
 [application]
@@ -32,7 +50,6 @@ Signals="*res://autoloads/Signals.gd"
 
 window/size/width=1920
 window/size/height=1080
-window/size/fullscreen=true
 
 [input]
 

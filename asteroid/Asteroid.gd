@@ -1,4 +1,5 @@
 extends Area2D
+class_name Asteroid
 
 var preAsteroidFx := preload("res://asteroid/AsteroidFx.tscn")
 
