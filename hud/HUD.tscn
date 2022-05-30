@@ -7,6 +7,9 @@
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="LifeContainer" type="HBoxContainer" parent="."]
 margin_left = 16.0
@@ -24,3 +27,6 @@ custom_fonts/font = ExtResource( 2 )
 text = "0000000"
 align = 2
 uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
