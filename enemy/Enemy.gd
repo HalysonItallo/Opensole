@@ -41,7 +41,7 @@ func takeDamage(amount: int):
 
 
 func _on_VisibilityNotifier2D_screen_exited():
-	 pass # Replace with function body.
+	 queue_free()
 
 
 func _on_Enemy_area_entered(area):
