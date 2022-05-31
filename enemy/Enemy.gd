@@ -29,17 +29,22 @@ func fire():
 
 
 func takeDamage(amount: int):
+	if health == 0:
+		return
+	
 	health -= amount
-	Signals.emit_signal("on_score_increment", 20)
+	Signals.emit_signal("on_score_increment", 30)
 	
 	if health <= 0:
-		Signals.emit_signal("on_score_increment", 100)
-		var effect := preEnemyExplosion.instance()
-		effect.global_position = global_position
-		get_tree().current_scene.add_child(effect)
-		
+		Signals.emit_signal("on_score_increment", 300)
+		showEffect()
 		queue_free()
 
+
+func showEffect():
+	var effect := preEnemyExplosion.instance()
+	effect.global_position = global_position
+	get_tree().current_scene.add_child(effect)
 
 func _on_VisibilityNotifier2D_screen_exited():
 	queue_free()

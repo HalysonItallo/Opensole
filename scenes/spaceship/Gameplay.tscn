@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://hud/HUD.tscn" type="PackedScene" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://scenes/spaceship/AudioStreamPlayer.gd" type="Script" id=5]
 [ext_resource path="res://scenes/spaceship/Gameplay.gd" type="Script" id=6]
 [ext_resource path="res://enemy/Spawner.gd" type="Script" id=7]
+[ext_resource path="res://camera/ShakeCamera2D.tscn" type="PackedScene" id=8]
 
 [node name="Gameplay" type="Node"]
 script = ExtResource( 6 )
@@ -15,6 +16,7 @@ script = ExtResource( 6 )
 script = ExtResource( 5 )
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+scroll_ignore_camera_zoom = true
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
 z_index = -100
@@ -72,5 +74,10 @@ script = ExtResource( 7 )
 
 [node name="SpawnTimer" type="Timer" parent="Spawner"]
 one_shot = true
+
+[node name="ShakeCamera2D" parent="." instance=ExtResource( 8 )]
+anchor_mode = 0
+rotating = false
+current = true
 
 [connection signal="timeout" from="Spawner/SpawnTimer" to="Spawner" method="_on_SpawnTimer_timeout"]

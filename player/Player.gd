@@ -3,7 +3,7 @@ class_name Player
 
 export var speed: float = 1024
 export var fireDelay: float = 0.15
-export var life: int = 5
+export var life: int = 7
 export var damageInvincibilityTime: float = 1.25
 
 var velocity := Vector2(0, 0)
@@ -79,10 +79,13 @@ func takeDamage(damageAmount: int):
 	life -= damageAmount
 	Signals.emit_signal("on_player_life_changed", life)
 	
-	if (life <= 0):
-		print("You died")
-		queue_free()
+	var cam := get_tree().current_scene.find_node("ShakeCamera2D", true, false)
+	cam.setDecay(1.25)
+	cam.add_trauma(0.8)
 	
+	if (life <= 0):
+		queue_free()
+		get_tree().change_scene("res://scenes/gameover/GameOver.tscn")
 
 
 func _on_Invincibility_timeout():
