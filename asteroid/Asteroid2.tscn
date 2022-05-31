@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://asteroid/Asteroid.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/sprites/gameplay/asteroid2_big.png" type="Texture" id=2]
+
+[node name="Asteroid2" instance=ExtResource( 1 )]
+
+[node name="Sprite" parent="." index="0"]
+texture = ExtResource( 2 )
+
+[node name="CollisionPolygon2D" parent="." index="1"]
+polygon = PoolVector2Array( -40.604, -52.7395, -31.4681, -61.8675, 3.0453, -61.8675, 22.3322, -52.7395, 39.5889, -34.4835, 47.7097, -25.3555, 56.8456, -7.09955, 56.8456, 26.3698, 47.7097, 44.6257, 38.5738, 54.768, 21.3171, 62.8817, -13.1963, 62.8817, -31.4681, 55.7822, -39.5889, 45.64, -50.755, 28.3982, -50.755, 8.11377, -59.8909, 8.11377, -59.8909, -33.4693, -50.755, -52.7395 )
+
+[node name="VisibilityNotifier2D" parent="." index="2"]
+position = Vector2( -0.999998, 0 )
+scale = Vector2( 5.8, 6.23214 )

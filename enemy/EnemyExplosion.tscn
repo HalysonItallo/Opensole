@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://enemy/EnemyExplosion.gd" type="Script" id=1]
+[ext_resource path="res://assets/sprites/gameplay/stars/starBig.png" type="Texture" id=2]
+
+[sub_resource type="Gradient" id=1]
+colors = PoolColorArray( 1, 0.709804, 0.431373, 0.784314, 1, 0.709804, 0.431373, 0 )
+
+[node name="EnemyExposion" type="CPUParticles2D"]
+emitting = false
+amount = 48
+lifetime = 1.75
+one_shot = true
+explosiveness = 1.0
+texture = ExtResource( 2 )
+direction = Vector2( 0, 0 )
+spread = 180.0
+gravity = Vector2( 0, 0 )
+initial_velocity = 100.0
+initial_velocity_random = 0.8
+scale_amount = 0.8
+scale_amount_random = 0.4
+color = Color( 1, 0.709804, 0.431373, 0.784314 )
+color_ramp = SubResource( 1 )
+script = ExtResource( 1 )

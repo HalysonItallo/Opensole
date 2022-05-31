@@ -1,0 +1,69 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://scripts/menu/menu.gd" type="Script" id=1]
+[ext_resource path="res://assets/sprites/menu/Start_BTN.png" type="Texture" id=2]
+[ext_resource path="res://assets/sprites/menu/Exit_BTN.png" type="Texture" id=3]
+[ext_resource path="res://assets/sprites/menu/BG.png" type="Texture" id=4]
+[ext_resource path="res://audio/menu_confirm.ogg" type="AudioStream" id=5]
+[ext_resource path="res://audio/menu_select.ogg" type="AudioStream" id=6]
+[ext_resource path="res://assets/sprites/background/logo.png" type="Texture" id=7]
+
+[sub_resource type="Theme" id=1]
+
+[node name="Menu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+focus_neighbour_bottom = NodePath("VBoxContainer/StartButton")
+script = ExtResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 960, 540 )
+rotation = 1.5729
+texture = ExtResource( 4 )
+
+[node name="Sprite" type="Sprite" parent="Sprite"]
+position = Vector2( 100, 0 )
+rotation = -1.5708
+texture = ExtResource( 7 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -60.0
+margin_top = 210.0
+margin_right = 362.0
+margin_bottom = 468.0
+rect_scale = Vector2( 0.5, 0.5 )
+focus_neighbour_bottom = NodePath("StartButton")
+theme = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="StartButton" type="Button" parent="VBoxContainer"]
+margin_right = 422.0
+margin_bottom = 127.0
+icon = ExtResource( 2 )
+flat = true
+
+[node name="ExitButton" type="Button" parent="VBoxContainer"]
+margin_top = 131.0
+margin_right = 422.0
+margin_bottom = 258.0
+icon = ExtResource( 3 )
+flat = true
+
+[node name="MenuSelect" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+
+[node name="MenuConfirm" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+
+[connection signal="focus_entered" from="VBoxContainer/StartButton" to="." method="_on_StartButton_focus_entered"]
+[connection signal="mouse_entered" from="VBoxContainer/StartButton" to="." method="_on_StartButton_mouse_entered"]
+[connection signal="pressed" from="VBoxContainer/StartButton" to="." method="_on_StartButton_pressed"]
+[connection signal="focus_entered" from="VBoxContainer/ExitButton" to="." method="_on_ExitButton_focus_entered"]
+[connection signal="mouse_entered" from="VBoxContainer/ExitButton" to="." method="_on_ExitButton_mouse_entered"]
+[connection signal="pressed" from="VBoxContainer/ExitButton" to="." method="_on_ExitButton_pressed"]
