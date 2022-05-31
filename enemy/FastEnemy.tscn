@@ -5,23 +5,24 @@
 [ext_resource path="res://enemy/FastEnemy.gd" type="Script" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 37.5625, 41.8333 )
+extents = Vector2( 27.1875, 25.6667 )
 
 [node name="FastEnemy" instance=ExtResource( 1 )]
 script = ExtResource( 3 )
 verticalSpeed = 386.0
+health = 6
 
 [node name="Sprite" parent="." index="0"]
 position = Vector2( 0, 34 )
 rotation = 3.14159
-scale = Vector2( 0.75, 0.75 )
+scale = Vector2( 0.6, 0.5 )
 texture = ExtResource( 2 )
 
 [node name="CollisionShape2D" parent="." index="1"]
-position = Vector2( 1.8, 16.75 )
+position = Vector2( 0, 22.5 )
 scale = Vector2( 3.2, 1.5 )
 shape = SubResource( 1 )
 
 [node name="VisibilityNotifier2D" parent="." index="2"]
-position = Vector2( 1, 16 )
-scale = Vector2( 12, 6.2 )
+position = Vector2( -3.8147e-06, 23 )
+scale = Vector2( 9, 4.1 )

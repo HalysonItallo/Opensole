@@ -1,7 +1,7 @@
 extends Control
 
 var preloadedIcon := preload("res://hud/LifeIcon.tscn")
-const STARTING_LIVES = 5
+const STARTING_LIVES = 7
 onready var lifeContainer := $LifeContainer
 var score: int = 0
 
