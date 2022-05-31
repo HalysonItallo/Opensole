@@ -14,8 +14,10 @@ onready var shootPositions := $ShootPositions
 onready var fireDelayTimer := $FireDelay
 onready var invincibilityTimer := $Invincibility
 onready var shieldSprite := $Shield
+onready var deathAudioStream := $DeathAudioStream
 
-func _ready():
+
+func _ready():	
 	var viewportSize := get_viewport_rect().size
 	var yOffset = (viewportSize.y * 10) / 100 # 10% acima
 	position.x = viewportSize.x / 2.0 # Metade da tela à direita (na verdade centraliza, começando de 0,0)

@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://hud/HUD.gd" type="Script" id=1]
 [ext_resource path="res://assets/fonts/customfont.tres" type="DynamicFont" id=2]
+[ext_resource path="res://audio/enemy_hit.ogg" type="AudioStream" id=3]
+[ext_resource path="res://audio/enemy_bullet_hit.ogg" type="AudioStream" id=4]
+[ext_resource path="res://audio/player_damage.ogg" type="AudioStream" id=5]
 
 [node name="HUD" type="Control"]
 anchor_right = 1.0
@@ -25,3 +28,14 @@ custom_fonts/font = ExtResource( 2 )
 text = "000"
 align = 2
 uppercase = true
+
+[node name="EnemyHitStream" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+volume_db = 8.0
+
+[node name="EnemyBulletHitStream" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+volume_db = 5.0
+
+[node name="PlayerDamageStream" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )

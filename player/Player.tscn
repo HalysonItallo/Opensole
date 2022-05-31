@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://assets/sprites/spaceships/nave1.png" type="Texture" id=1]
 [ext_resource path="res://player/Player.gd" type="Script" id=2]
 [ext_resource path="res://assets/sprites/gameplay/shield.PNG" type="Texture" id=3]
+[ext_resource path="res://audio/player_damage.ogg" type="AudioStream" id=4]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 64.0703
@@ -34,5 +35,8 @@ one_shot = true
 [node name="Shield" type="Sprite" parent="."]
 scale = Vector2( 0.65, 0.65 )
 texture = ExtResource( 3 )
+
+[node name="DeathAudioStream" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
 
 [connection signal="timeout" from="Invincibility" to="." method="_on_Invincibility_timeout"]
