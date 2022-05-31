@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://scripts/menu/menu.gd" type="Script" id=1]
 [ext_resource path="res://assets/sprites/menu/Start_BTN.png" type="Texture" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://assets/sprites/menu/BG.png" type="Texture" id=4]
 [ext_resource path="res://audio/menu_confirm.ogg" type="AudioStream" id=5]
 [ext_resource path="res://audio/menu_select.ogg" type="AudioStream" id=6]
+[ext_resource path="res://assets/sprites/background/logo.png" type="Texture" id=7]
 
 [sub_resource type="Theme" id=1]
 
@@ -20,17 +21,26 @@ position = Vector2( 960, 540 )
 rotation = 1.5729
 texture = ExtResource( 4 )
 
+[node name="Sprite" type="Sprite" parent="Sprite"]
+position = Vector2( 100, 0 )
+rotation = -1.5708
+texture = ExtResource( 7 )
+
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -211.0
-margin_top = -129.0
-margin_right = 211.0
-margin_bottom = 129.0
+margin_left = -60.0
+margin_top = 210.0
+margin_right = 362.0
+margin_bottom = 468.0
+rect_scale = Vector2( 0.5, 0.5 )
 focus_neighbour_bottom = NodePath("StartButton")
 theme = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="StartButton" type="Button" parent="VBoxContainer"]
 margin_right = 422.0
